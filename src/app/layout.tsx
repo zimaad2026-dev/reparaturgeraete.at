@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://www.haushaltsgeraete-kundendienst.at";
-const siteName = "GeräteProfi Kundendienst";
+const siteName = "GeräteProfi";
 const siteDescription =
-  "Schneller und zuverlässiger Haushaltsgeräte Kundendienst in Österreich – Reparatur von Waschmaschinen, Geschirrspülern, Kühlschränken, Backöfen und Trocknern.";
+  "Schneller Haushaltsgeräte-Kundendienst in Österreich – Waschmaschine, Geschirrspüler, Kühlschrank, Backofen, Trockner.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} – Haushaltsgeräte Reparatur in Österreich`,
+    default: `Reparatur Österreich | ${siteName}`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -32,13 +32,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: `${siteName} – Haushaltsgeräte Reparatur in Österreich`,
+    title: `Reparatur Österreich | ${siteName}`,
     description: siteDescription,
     siteName,
     locale: "de_AT",
   },
   alternates: {
     canonical: "/",
+    languages: {
+      "de-AT": "/",
+      "en-AT": "/en",
+    },
   },
 };
 
@@ -49,13 +53,13 @@ const localBusinessJsonLd = {
   name: siteName,
   description: siteDescription,
   url: siteUrl,
-  telephone: "+43 1 234 56 78",
-  email: "service@haushaltsgeraete-kundendienst.at",
+  telephone: "+43 0 000 000000",
+  email: "demo@example.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Musterstraße 12",
+    streetAddress: "Demo Straße 1",
     addressLocality: "Wien",
-    postalCode: "1010",
+    postalCode: "1000",
     addressCountry: "AT",
   },
   geo: {
