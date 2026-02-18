@@ -25,42 +25,62 @@ export default function ServicesOverviewPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <ServiceCard
-            icon={<span className="text-lg">🧺</span>}
             title="Waschmaschinen Reparatur"
             description="Wenn die Trommel blockiert, das Wasser nicht mehr abgepumpt wird oder der Motor streikt, sorgen wir wieder für zuverlässige Waschgänge."
             href="/services/waschmaschinen-reparatur"
+            imageSrc="/washaingmachine.jpg"
+            imageAlt="Waschmaschinen Reparatur"
           />
           <ServiceCard
-            icon={<span className="text-lg">🍽️</span>}
             title="Geschirrspüler Reparatur"
             description="Reinigt das Geschirr nicht mehr richtig, bleibt das Programm stehen oder zeigt das Display Fehlercodes? Wir finden die Ursache."
             href="/services/geschirrspueler-reparatur"
+            imageSrc="/dishwasher.jpg"
+            imageAlt="Geschirrspüler Reparatur"
           />
           <ServiceCard
-            icon={<span className="text-lg">❄️</span>}
             title="Kühlschrank Reparatur"
             description="Ob Kühlschrank, Kühl-Gefrier-Kombination oder Side-by-Side – bei Kühlproblemen handeln wir schnell, damit Ihre Lebensmittel geschützt bleiben."
             href="/services/kuehlschrank-reparatur"
+            imageSrc="/Refrigerator.jpg"
+            imageAlt="Kühlschrank Reparatur"
           />
           <ServiceCard
-            icon={<span className="text-lg">🔥</span>}
             title="Backofen Reparatur"
             description="Heizt nicht mehr richtig, wird ungleichmäßig heiß oder schaltet sich selbstständig aus? Wir kümmern uns um Elektronik, Heizelemente & Sensoren."
             href="/services/backofen-reparatur"
+            imageSrc="/Oven.jpg"
+            imageAlt="Backofen Reparatur"
           />
           <ServiceCard
-            icon={<span className="text-lg">🌬️</span>}
+            title="Elektroherd Reparatur"
+            description="Defekte Kochplatten, durchgebrannte Heizspiralen oder Probleme mit der Temperaturregelung – wir reparieren Ihren Elektroherd fachgerecht direkt vor Ort."
+            href="/services/elektroherd-reparatur"
+            imageSrc="/Elektroherd.png"
+            imageAlt="Elektroherd Reparatur"
+          />
+          <ServiceCard
+            title="Mikrowellen Reparatur"
+            description="Wenn die Mikrowelle nicht mehr gleichmäßig erhitzt, der Drehteller streikt oder ungewöhnliche Geräusche auftreten – wir prüfen Elektronik, Türkontakte und Magnetron."
+            href="/services/mikrowellen-reparatur"
+            imageSrc="/microwave.jpg"
+            imageAlt="Mikrowellen Reparatur"
+          />
+          <ServiceCard
             title="Trockner Reparatur"
             description="Trocknet nicht mehr, wird zu heiß oder bricht das Programm ab? Wir prüfen Luftwege, Sensoren und Heizeinheiten Ihres Trockners."
             href="/services/trockner-reparatur"
+            imageSrc="/dryperrepair.jpeg"
+            imageAlt="Trockner Reparatur"
           />
           <ServiceCard
-            icon={<span className="text-lg">🔧</span>}
-            title="Weitere Geräte & gewerbliche Lösungen"
-            description="Auch für Herde, spezielle Marken oder einfache gewerbliche Geräte finden wir oft eine wirtschaftliche Reparaturlösung."
-            href="/kontakt"
+            title="Altgeräte Entsorgen"
+            description="Fachgerechte Entsorgung von Altgeräten und Elektrogeräten. Wir holen Ihr defektes oder nicht mehr benötigtes Gerät ab und entsorgen es umweltgerecht nach gesetzlichen Vorschriften."
+            href="/services/altgeraete-entsorgen"
+            imageSrc="/altgeräte.png"
+            imageAlt="Altgeräte Entsorgen"
           />
         </div>
 
@@ -89,7 +109,7 @@ export default function ServicesOverviewPage() {
                   key={brand}
                   className="flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-1.5"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand" />
                   <span>{brand}</span>
                 </div>
               ))}

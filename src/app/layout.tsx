@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/CookieBanner";
+import { SERVICE_EMAIL, SERVICE_PHONE } from "@/lib/contact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/raparaturkundendienstfavicon.png",
   },
   openGraph: {
     type: "website",
@@ -53,15 +55,8 @@ const localBusinessJsonLd = {
   name: siteName,
   description: siteDescription,
   url: siteUrl,
-  telephone: "+43 0 000 000000",
-  email: "demo@example.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Demo Straße 1",
-    addressLocality: "Wien",
-    postalCode: "1000",
-    addressCountry: "AT",
-  },
+  telephone: SERVICE_PHONE,
+  email: SERVICE_EMAIL,
   geo: {
     "@type": "GeoCoordinates",
     latitude: 48.2082,
@@ -119,6 +114,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <CookieBanner />
       </body>
     </html>
   );

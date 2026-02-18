@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceCard from "@/components/common/ServiceCard";
 import EmergencyCTA from "@/components/common/EmergencyCTA";
+import ContactForm from "@/components/contact/ContactForm";
+import { SERVICE_EMAIL, SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Reparatur Österreich",
+  title: "Haushaltsgeräte Reparatur in Österreich",
   description:
-    "Haushaltsgeräte reparieren in Österreich – Waschmaschine, Geschirrspüler, Kühlschrank, Backofen, Trockner. Schnell, transparent, erfahrene Techniker.",
+    "Haushaltsgeräte Reparatur in Österreich – Waschmaschinen Reparatur, Geschirrspüler Reparatur, Kühlschrank Reparatur und Herd Reparatur durch erfahrene Techniker mit transparenten Fixpreisen.",
 };
 
 const faqJsonLd = {
@@ -23,7 +25,7 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Wie viel kostet eine Geräte-Reparatur?",
+      name: "Wie viel kostet eine Haushaltsgeräte Reparatur?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Wir arbeiten mit transparenten Pauschalen für Anfahrt und Diagnose. Vor jeder Reparatur erhalten Sie einen verbindlichen Kostenvoranschlag, den Sie in Ruhe entscheiden können.",
@@ -59,54 +61,84 @@ export default function Home() {
 
       <div className="bg-slate-50">
         {/* Hero */}
-        <section className="border-b border-slate-200 bg-gradient-to-b from-white to-slate-50">
-          <div className="mx-auto max-w-2xl px-4 pb-16 pt-12 text-center md:px-8 md:pb-20 md:pt-16">
-            <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-              Haushaltsgeräte defekt?{" "}
-              <span className="text-blue-700">
-                Wir reparieren schnell & zuverlässig.
-              </span>
-            </h1>
-            <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              Unsere Techniker kommen zu Ihnen – transparente Preise, ehrliche Beratung.
-            </p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="tel:+430000000000"
-                className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-              >
-                +43 0 000 000000
-              </a>
-              <Link
-                href="#kontaktformular"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
-              >
-                Online Anfrage
-              </Link>
+        <section className="relative border-b border-slate-200 bg-gradient-to-b from-white to-slate-50">
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[url('/hero-bg.svg')] bg-cover bg-top opacity-20" />
+          <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 pb-16 pt-12 md:flex-row md:items-stretch md:px-8 md:pb-20 md:pt-16">
+            <div className="max-w-xl text-center md:text-left">
+              <div className="inline-flex items-center gap-2 rounded-full bg-brand-light/40 px-3 py-1 text-xs font-semibold text-brand-dark ring-1 ring-brand/20">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[0.65rem] text-white">
+                  ✓
+                </span>
+                <span>GeräteProfi Haushaltsgeräte Kundendienst</span>
+              </div>
+              <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+                Kundendienst Haushaltsgeräte in Österreich –{" "}
+                <span className="text-brand">
+                  schnell, zuverlässig & direkt vor Ort.
+                </span>
+              </h1>
+              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                Spezialisierte Techniker für Waschmaschinen, Geschirrspüler, Kühlschränke, Backöfen und Trockner – mit klaren Fixpreisen und ehrlicher Beratung.
+              </p>
+              <div className="mt-6 flex flex-col items-center justify-start gap-3 sm:flex-row md:items-stretch">
+                <a
+                  href={SERVICE_PHONE_HREF}
+                  className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  <span className="mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white">
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.75 3.5L6.5 3.25L8 6.75L6.25 7.75C6.83282 9.17223 7.82777 10.4172 9.25 11L10.25 9.25L13.75 10.75L13.5 12.5C13.3895 13.2312 12.7688 13.8105 12.0376 13.921L11.25 14C8.35051 13.8421 6.1579 12.6495 4.75 11.25C3.35051 9.8421 2.1579 7.64949 2 4.75L2.07902 3.96236C2.18949 3.23116 2.76884 2.61051 3.5 2.5L4.75 3.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  Jetzt anrufen: {SERVICE_PHONE}
+                </a>
+                <Link
+                  href="#kontaktformular"
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Jetzt Online-Anfrage senden
+                </Link>
+              </div>
+              <p className="mt-3 text-xs text-slate-500">
+                Mo–Fr 08:00–18:00 Uhr · Österreichweiter Kundendienst
+              </p>
             </div>
-            <dl className="mt-10 grid gap-5 text-sm text-slate-600 sm:grid-cols-3 sm:justify-items-center">
-              <div className="flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700">✓</span>
-                <div className="min-w-0 text-left">
-                  <dt className="font-semibold text-slate-900">Schneller Service</dt>
-                  <dd className="mt-0.5">Termine meist innerhalb von 24h</dd>
-                </div>
+            <div className="hidden flex-1 md:block">
+              <div className="relative h-full min-h-[220px] rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-100 via-white to-slate-100 p-4 shadow-sm">
+                <div className="absolute inset-4 rounded-2xl bg-[url('/Refrigerator.jpg')] bg-cover bg-center shadow-inner" />
               </div>
-              <div className="flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700">€</span>
-                <div className="min-w-0 text-left">
-                  <dt className="font-semibold text-slate-900">Transparente Preise</dt>
-                  <dd className="mt-0.5">Fixpreis für Anfahrt & Diagnose</dd>
-                </div>
+            </div>
+          </div>
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 px-4 text-sm text-slate-600 sm:grid-cols-3">
+            <div className="flex items-start gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-dark">✓</span>
+              <div className="min-w-0 text-left">
+                <dt className="font-semibold text-slate-900">Schneller Service</dt>
+                <dd className="mt-0.5">Termine meist innerhalb von 24h</dd>
               </div>
-              <div className="flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700">★</span>
-                <div className="min-w-0 text-left">
-                  <dt className="font-semibold text-slate-900">Erfahrene Techniker</dt>
-                  <dd className="mt-0.5">Markenübergreifende Expertise</dd>
-                </div>
+            </div>
+            <div className="flex items-start gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-dark">€</span>
+              <div className="min-w-0 text-left">
+                <dt className="font-semibold text-slate-900">Transparente Preise</dt>
+                <dd className="mt-0.5">Fixpreis für Anfahrt & Diagnose</dd>
               </div>
-            </dl>
+            </div>
+            <div className="flex items-start gap-3 rounded-2xl bg-white px-5 py-4 shadow-sm">
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand-dark">★</span>
+              <div className="min-w-0 text-left">
+                <dt className="font-semibold text-slate-900">Erfahrene Techniker</dt>
+                <dd className="mt-0.5">Markenübergreifende Expertise</dd>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -115,167 +147,7 @@ export default function Home() {
           id="kontaktformular"
           className="mx-auto -mt-4 max-w-5xl px-4 pb-8 md:-mt-8 md:px-8 lg:px-10"
         >
-          <div className="rounded-3xl border border-slate-200 bg-white/95 shadow-lg backdrop-blur-sm">
-            <div className="border-b border-slate-100 px-6 pb-5 pt-7 sm:px-9">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
-                Schnellanfrage – wir rufen Sie zurück!
-              </h2>
-              <p className="mt-1 text-sm text-slate-600">
-                Hinterlassen Sie uns Ihre Kontaktdaten und eine kurze
-                Problembeschreibung. Unser Service-Team meldet sich so rasch wie
-                möglich telefonisch bei Ihnen.
-              </p>
-              <p className="mt-0.5 text-xs text-slate-500">
-                Quick inquiry – we&apos;ll call you back and discuss the best
-                repair option for your appliance.
-              </p>
-            </div>
-            <form className="space-y-7 px-6 py-7 sm:px-9 sm:py-8">
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="firstName"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    Vorname *
-                  </label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder="Max"
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="lastName"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    Nachname *
-                  </label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder="Mustermann"
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="phone"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    Telefonnummer *
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+43 ..."
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="email"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    E-Mail-Adresse *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="email@example.com"
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="location"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    Standort / PLZ *
-                  </label>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                    placeholder="Wien, 1010"
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label
-                    htmlFor="appliance"
-                    className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                  >
-                    Gerätetyp *
-                  </label>
-                  <select
-                    id="appliance"
-                    name="appliance"
-                    className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Bitte wählen...
-                    </option>
-                    <option>Waschmaschine</option>
-                    <option>Geschirrspüler</option>
-                    <option>Kühlschrank / Gefrierschrank</option>
-                    <option>Backofen / Herd</option>
-                    <option>Trockner</option>
-                    <option>Anderes Gerät</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label
-                  htmlFor="message"
-                  className="text-xs font-medium uppercase tracking-wide text-slate-600"
-                >
-                  Problembeschreibung *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder="Beschreiben Sie kurz das Problem mit Ihrem Gerät..."
-                  className="block w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none ring-0 transition focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
-                />
-              </div>
-
-              <div className="flex flex-col items-start justify-between gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:items-center">
-                <p className="text-xs text-slate-500">
-                  Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß
-                  unserer{" "}
-                  <Link
-                    href="/datenschutz"
-                    className="font-medium text-blue-600 hover:text-blue-700"
-                  >
-                    Datenschutzerklärung
-                  </Link>{" "}
-                  zu.
-                </p>
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
-                >
-                  Anfrage senden
-                </button>
-              </div>
-            </form>
-          </div>
+          <ContactForm />
         </section>
 
         {/* Services grid */}
@@ -283,58 +155,76 @@ export default function Home() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-                Unsere Reparaturservices für Haushaltsgeräte
+                Haushaltsgeräte Reparatur für Ihr Zuhause
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
-                Spezialisierte Kundendienst-Techniker für alle gängigen
-                Hausgeräte – markenübergreifend geschult, mit originalen oder
-                qualitativ gleichwertigen Ersatzteilen.
+                Wir übernehmen Waschmaschinen Reparatur, Geschirrspüler Reparatur, Kühlschrank Reparatur, Herd Reparatur und weitere Hausgeräte – markenübergreifend mit Original- oder Qualitätsersatzteilen.
               </p>
             </div>
             <Link
               href="/services"
-              className="mt-2 text-sm font-semibold text-blue-700 hover:text-blue-800"
+              className="mt-2 text-sm font-semibold text-brand-dark hover:text-brand"
             >
               Alle Services im Überblick
             </Link>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <ServiceCard
-              icon={<span className="text-lg">🧺</span>}
-              title="Waschmaschinen Reparatur"
-              description="Wenn die Waschmaschine nicht mehr abpumpt, laute Geräusche macht oder Fehlercodes anzeigt, finden wir die Ursache und beheben den Defekt."
-              href="/services/waschmaschinen-reparatur"
-            />
-            <ServiceCard
-              icon={<span className="text-lg">🍽️</span>}
-              title="Geschirrspüler Reparatur"
-              description="Reinigt schlecht, bleibt stehen oder läuft über? Wir sorgen wieder für strahlend sauberes Geschirr ohne Wasserlachen in der Küche."
-              href="/services/geschirrspueler-reparatur"
-            />
-            <ServiceCard
-              icon={<span className="text-lg">❄️</span>}
-              title="Kühlschrank Reparatur"
-              description="Bei Temperaturproblemen, starker Eisbildung oder lauten Kompressoren handeln wir schnell – damit Ihre Lebensmittel frisch bleiben."
-              href="/services/kuehlschrank-reparatur"
-            />
-            <ServiceCard
-              icon={<span className="text-lg">🔥</span>}
-              title="Backofen Reparatur"
-              description="Ihr Backofen heizt nicht mehr richtig, brennt an einer Seite an oder zeigt Fehlercodes? Wir kalibrieren, reparieren und tauschen defekte Bauteile."
+              title="Herd & Backofen Reparatur"
+              description="Ob Herd oder Backofen: heizt nicht mehr richtig, brennt einseitig an oder zeigt Fehlercodes – wir reparieren Elektronik, Heizelemente und Sensoren fachgerecht."
               href="/services/backofen-reparatur"
+              imageSrc="/Oven.jpg"
+              imageAlt="Herd und Backofen Reparatur"
             />
             <ServiceCard
-              icon={<span className="text-lg">🌬️</span>}
+              title="Waschmaschinen Reparatur"
+              description="Professionelle Waschmaschinen Reparatur, wenn die Maschine nicht mehr abpumpt, laute Geräusche macht oder Fehlercodes anzeigt – wir finden die Ursache und beheben den Defekt."
+              href="/services/waschmaschinen-reparatur"
+              imageSrc="/washaingmachine.jpg"
+              imageAlt="Waschmaschine in der Haushaltsgeräte Reparatur"
+            />
+            <ServiceCard
               title="Trockner Reparatur"
-              description="Der Trockner wird nicht mehr warm, bricht Programme ab oder braucht ewig? Unsere Techniker prüfen Heizung, Sensorik und Luftwege."
+              description="Trockner Reparatur, wenn das Gerät nicht mehr warm wird, Programme abbricht oder ewig läuft – unsere Techniker prüfen Heizung, Sensorik und Luftwege."
               href="/services/trockner-reparatur"
+              imageSrc="/dryperrepair.jpeg"
+              imageAlt="Trockner Reparatur"
             />
             <ServiceCard
-              icon={<span className="text-lg">🏠</span>}
-              title="Weitere Haushaltsgeräte"
-              description="Sie haben ein anderes Gerät? Fragen Sie uns – oft können wir auch Herde, Kombi-Geräte oder spezielle Markenmodelle reparieren."
-              href="/services"
+              title="Elektroherd Reparatur"
+              description="Defekte Kochplatten, durchgebrannte Heizspiralen oder Probleme mit der Temperaturregelung – wir reparieren Ihren Elektroherd fachgerecht direkt vor Ort."
+              href="/services/elektroherd-reparatur"
+              imageSrc="/Elektroherd.png"
+              imageAlt="Elektroherd Reparatur"
+            />
+            <ServiceCard
+              title="Mikrowellen Reparatur"
+              description="Wenn die Mikrowelle nicht mehr gleichmäßig erhitzt, der Drehteller streikt oder ungewöhnliche Geräusche auftreten – wir prüfen Elektronik, Türkontakte und Magnetron."
+              href="/services/mikrowellen-reparatur"
+              imageSrc="/microwave.jpg"
+              imageAlt="Mikrowellen Reparatur"
+            />
+            <ServiceCard
+              title="Altgeräte Entsorgen"
+              description="Fachgerechte Entsorgung von Altgeräten und Elektrogeräten. Wir holen Ihr defektes oder nicht mehr benötigtes Gerät ab und entsorgen es umweltgerecht nach gesetzlichen Vorschriften."
+              href="/services/altgeraete-entsorgen"
+              imageSrc="/altgeräte.png"
+              imageAlt="Altgeräte Entsorgen"
+            />
+            <ServiceCard
+              title="Geschirrspüler Reparatur"
+              description="Geschirrspüler Reparatur bei schlechtem Spülergebnis, Programmabbrüchen oder Überlaufen – wir sorgen wieder für strahlend sauberes Geschirr ohne Wasserlacken in der Küche."
+              href="/services/geschirrspueler-reparatur"
+              imageSrc="/dishwasher.jpg"
+              imageAlt="Geschirrspüler in der Haushaltsgeräte Reparatur"
+            />
+            <ServiceCard
+              title="Kühlschrank Reparatur"
+              description="Kühlschrank Reparatur bei Temperaturproblemen, starker Eisbildung oder lauten Kompressoren – wir handeln schnell, damit Ihre Lebensmittel frisch bleiben."
+              href="/services/kuehlschrank-reparatur"
+              imageSrc="/Refrigerator.jpg"
+              imageAlt="Kühlschrank Reparatur vor Ort"
             />
           </div>
         </section>
@@ -400,7 +290,7 @@ export default function Home() {
                 </h3>
                 <ol className="mt-4 space-y-4 text-sm text-slate-600">
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-xs font-semibold text-blue-700">
+                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-semibold text-brand-dark">
                       1
                     </span>
                     <div>
@@ -412,7 +302,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-xs font-semibold text-blue-700">
+                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-semibold text-brand-dark">
                       2
                     </span>
                     <div>
@@ -426,7 +316,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-xs font-semibold text-blue-700">
+                    <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-semibold text-brand-dark">
                       3
                     </span>
                     <div>
@@ -440,67 +330,12 @@ export default function Home() {
                 </ol>
                 <div className="mt-5 rounded-2xl bg-slate-50 px-4 py-3 text-xs text-slate-600">
                   <p>
-                    Für dringende Fälle steht Ihnen unser{" "}
-                    <Link
-                      href="/notdienst"
-                      className="font-semibold text-blue-700 hover:text-blue-800"
-                    >
-                      Notdienst
-                    </Link>{" "}
-                    zur Verfügung – insbesondere bei Kühlgeräten und
-                    Wasserschäden.
+                    Für dringende Fälle vermerken Sie dies bitte direkt in Ihrer
+                    Anfrage – wir versuchen, möglichst zeitnahe Termine zu
+                    ermöglichen.
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Emergency CTA */}
-        <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 lg:px-8">
-          <EmergencyCTA />
-        </section>
-
-        {/* Service areas */}
-        <section className="border-y border-slate-200 bg-slate-50/80">
-          <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 lg:px-8">
-            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-              <div>
-                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-                  Einsatzgebiete in Österreich
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
-                  Unsere Techniker sind in vielen Regionen Österreichs für Sie
-                  unterwegs. Durch regionale Teams halten wir Anfahrtswege kurz
-                  und Reaktionszeiten gering.
-                </p>
-              </div>
-              <Link
-                href="/einsatzgebiete"
-                className="mt-2 text-sm font-semibold text-blue-700 hover:text-blue-800"
-              >
-                Alle Einsatzgebiete anzeigen
-              </Link>
-            </div>
-            <div className="mt-6 grid gap-3 text-sm text-slate-700 sm:grid-cols-3 lg:grid-cols-4">
-              {[
-                "Wien & Umgebung",
-                "Graz & Umgebung",
-                "Linz & Oberösterreich",
-                "Salzburg Stadt & Land",
-                "Innsbruck & Tirol",
-                "St. Pölten & Niederösterreich",
-                "Klagenfurt & Kärnten",
-                "Villach & Umgebung",
-              ].map((city) => (
-                <div
-                  key={city}
-                  className="flex items-center gap-2 rounded-2xl bg-white px-3 py-2 shadow-sm"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                  <span>{city}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -573,30 +408,30 @@ export default function Home() {
                 Unser Service-Team hilft Ihnen gerne weiter und berät Sie, ob
                 eine Reparatur in Ihrem Fall sinnvoll ist.
               </p>
-              <div className="mt-4 space-y-2 text-sm text-slate-700">
+              <div className="mt-4 space-y-1.5 text-sm text-slate-700">
                 <p>
-                  Tel.:{" "}
+                  <span className="font-medium text-slate-900">Telefon:</span>{" "}
                   <a
-                    href="tel:+430000000000"
-                    className="font-semibold text-blue-700 hover:text-blue-800"
+                    href={SERVICE_PHONE_HREF}
+                    className="font-medium text-brand-dark hover:text-brand"
                   >
-                    +43 0 000 000000
+                    {SERVICE_PHONE}
                   </a>
                 </p>
                 <p>
-                  E-Mail:{" "}
+                  <span className="font-medium text-slate-900">E-Mail:</span>{" "}
                   <a
-                    href="mailto:demo@example.com"
-                    className="font-medium text-blue-700 hover:text-blue-800"
+                    href={`mailto:${SERVICE_EMAIL}`}
+                    className="font-medium text-brand-dark hover:text-brand"
                   >
-                    demo@example.com
+                    {SERVICE_EMAIL}
                   </a>
                 </p>
                 <p>
                   Oder nutzen Sie unser{" "}
                   <Link
                     href="/kontakt"
-                    className="font-semibold text-blue-700 hover:text-blue-800"
+                    className="font-semibold text-brand-dark hover:text-brand"
                   >
                     Kontaktformular
                   </Link>
