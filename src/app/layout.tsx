@@ -95,71 +95,89 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="de">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
       >
+        {/* Load Google Tag (Ads + GA4) */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
+
+        {/* Global gtag setup + Consent Mode */}
         <Script
           id="gtag-global"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('config','${GA4_MEASUREMENT_ID}');gtag('config','${GOOGLE_ADS_ID}');window.updateConsent=function(granted){if(!window.gtag)return;window.gtag('consent','update',{ad_storage:granted?'granted':'denied',analytics_storage:granted?'granted':'denied',ad_user_data:granted?'granted':'denied',ad_personalization:granted?'granted':'denied'});};`,
-          }}
-        />
-        <Script
-          id="google-ads-conversion"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
             __html: `
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  if (typeof gtag !== "undefined") {
-    gtag('event', 'conversion', {
-      'send_to': 'AW-17863468955/8e1CCIhb-PsbEJvP-8VC',
-      'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
-    });
-  }
-  return false;
-}
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
 
-document.addEventListener("click", function(e) {
-  const target = e.target.closest("a[href^='tel:']");
-  if (target) {
-    gtag_report_conversion();
-  }
-});
-`,
+              gtag('js', new Date());
+
+              // Default consent (GDPR compliant)
+              gtag('consent','default',{
+                ad_storage:'denied',
+                analytics_storage:'denied',
+                ad_user_data:'denied',
+                ad_personalization:'denied'
+              });
+
+              // Configure Google Ads
+              gtag('config','${GOOGLE_ADS_ID}');
+
+              // Configure GA4
+              gtag('config','${GA4_MEASUREMENT_ID}');
+
+              // Consent update function (used by CookieBanner)
+              window.updateConsent = function(granted){
+                if(!window.gtag) return;
+                window.gtag('consent','update',{
+                  ad_storage: granted ? 'granted' : 'denied',
+                  analytics_storage: granted ? 'granted' : 'denied',
+                  ad_user_data: granted ? 'granted' : 'denied',
+                  ad_personalization: granted ? 'granted' : 'denied'
+                });
+              };
+
+              // Track tel: clicks (Google Ads conversion)
+              document.addEventListener("click", function(e) {
+                const target = e.target.closest("a[href^='tel:']");
+                if (target && typeof gtag === "function") {
+                  gtag('event','conversion',{
+                    send_to: '${GOOGLE_ADS_ID}/8e1CCIhb-PsbEJvP-8VC'
+                  });
+                }
+              });
+            `,
           }}
         />
+
         <div className="flex min-h-screen flex-col">
           <Navbar />
+
           <main className="flex-1">
             {children}
+
+            {/* LocalBusiness JSON-LD */}
             <script
               type="application/ld+json"
               suppressHydrationWarning
-              // JSON-LD for LocalBusiness schema
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify(localBusinessJsonLd),
               }}
             />
           </main>
+
           <Footer />
         </div>
+
         <CookieBanner />
       </body>
     </html>
