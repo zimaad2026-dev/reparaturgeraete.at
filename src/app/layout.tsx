@@ -114,6 +114,37 @@ export default function RootLayout({
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('config','${GA4_MEASUREMENT_ID}');gtag('config','${GOOGLE_ADS_ID}');window.updateConsent=function(granted){if(!window.gtag)return;window.gtag('consent','update',{ad_storage:granted?'granted':'denied',analytics_storage:granted?'granted':'denied',ad_user_data:granted?'granted':'denied',ad_personalization:granted?'granted':'denied'});};`,
           }}
         />
+        <Script
+          id="google-ads-conversion"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  if (typeof gtag !== "undefined") {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17863468955/8e1CCIhb-PsbEJvP-8VC',
+      'value': 1.0,
+      'currency': 'EUR',
+      'event_callback': callback
+    });
+  }
+  return false;
+}
+
+document.addEventListener("click", function(e) {
+  const target = e.target.closest("a[href^='tel:']");
+  if (target) {
+    gtag_report_conversion();
+  }
+});
+`,
+          }}
+        />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">
