@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceCard from "@/components/common/ServiceCard";
 import EmergencyCTA from "@/components/common/EmergencyCTA";
+import CallLink from "@/components/CallLink";
 import { SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -33,13 +34,7 @@ export default function HomeEn() {
               Our technicians come to your home – transparent pricing, honest advice and specialist repairs for all common household appliances.
             </p>
             <div className="mt-6 flex flex-col items-center justify-start gap-3 sm:flex-row md:items-stretch">
-              <Link
-                href="/#kontaktformular"
-                className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Online request
-              </Link>
-              <a
+              <CallLink
                 href={SERVICE_PHONE_HREF}
                 className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               >
@@ -57,7 +52,13 @@ export default function HomeEn() {
                   </svg>
                 </span>
                 Call now: {SERVICE_PHONE}
-              </a>
+              </CallLink>
+              <Link
+                href="/#kontaktformular"
+                className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              >
+                Online request
+              </Link>
             </div>
             <p className="mt-3 text-xs text-slate-500">
               Mon–Fri 08:00–18:00 · Service across Austria

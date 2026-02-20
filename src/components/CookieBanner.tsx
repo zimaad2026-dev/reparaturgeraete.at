@@ -1,5 +1,6 @@
 "use client";
 
+/// <reference path="../gtag.d.ts" />
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -34,6 +35,11 @@ export default function CookieBanner() {
 
   const handleSaveSettings = (next: CookieConsent) => {
     updateConsent(next);
+    if (typeof window !== "undefined" && window.updateConsent) {
+      window.updateConsent(
+        next.statistics === true || next.marketing === true
+      );
+    }
     setIsSettingsOpen(false);
   };
 
@@ -43,6 +49,20 @@ export default function CookieBanner() {
 
   const handleCloseSettings = () => {
     setIsSettingsOpen(false);
+  };
+
+  const handleAcceptAll = () => {
+    acceptAll();
+    if (typeof window !== "undefined" && window.updateConsent) {
+      window.updateConsent(true);
+    }
+  };
+
+  const handleAcceptNecessaryOnly = () => {
+    acceptNecessaryOnly();
+    if (typeof window !== "undefined" && window.updateConsent) {
+      window.updateConsent(false);
+    }
   };
 
   return (
@@ -77,7 +97,7 @@ export default function CookieBanner() {
             <div className="mt-1 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:items-center sm:justify-end">
               <button
                 type="button"
-                onClick={acceptNecessaryOnly}
+                onClick={handleAcceptNecessaryOnly}
                 className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:text-xs"
               >
                 Nur notwendig
@@ -91,7 +111,7 @@ export default function CookieBanner() {
               </button>
               <button
                 type="button"
-                onClick={acceptAll}
+                onClick={handleAcceptAll}
                 className="inline-flex items-center justify-center rounded-full bg-brand px-3.5 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:text-xs"
               >
                 Alle akzeptieren

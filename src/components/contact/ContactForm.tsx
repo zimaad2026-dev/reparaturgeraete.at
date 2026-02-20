@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { trackContactFormSuccess } from "@/lib/gtag";
 
 type Status = "idle" | "sending" | "success" | "error";
 type Lang = "de" | "en";
@@ -134,6 +135,7 @@ export default function ContactForm({ lang = "de", defaultApplianceKey }: Contac
       }
       setStatus("success");
       form.reset();
+      trackContactFormSuccess();
     } catch {
       setStatus("error");
       setErrorMessage(t.errorNetwork);

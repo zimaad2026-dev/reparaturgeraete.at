@@ -3,6 +3,7 @@ import Link from "next/link";
 import ServiceCard from "@/components/common/ServiceCard";
 import EmergencyCTA from "@/components/common/EmergencyCTA";
 import ContactForm from "@/components/contact/ContactForm";
+import CallLink from "@/components/CallLink";
 import { SERVICE_EMAIL, SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -81,7 +82,7 @@ export default function Home() {
                 Spezialisierte Techniker für Waschmaschinen, Geschirrspüler, Kühlschränke, Backöfen und Trockner – mit klaren Fixpreisen und ehrlicher Beratung.
               </p>
               <div className="mt-6 flex flex-col items-center justify-start gap-3 sm:flex-row md:items-stretch">
-                <a
+                <CallLink
                   href={SERVICE_PHONE_HREF}
                   className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
@@ -99,7 +100,7 @@ export default function Home() {
                     </svg>
                   </span>
                   Jetzt anrufen: {SERVICE_PHONE}
-                </a>
+                </CallLink>
                 <Link
                   href="#kontaktformular"
                   className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
@@ -411,12 +412,12 @@ export default function Home() {
               <div className="mt-4 space-y-1.5 text-sm text-slate-700">
                 <p>
                   <span className="font-medium text-slate-900">Telefon:</span>{" "}
-                  <a
+                  <CallLink
                     href={SERVICE_PHONE_HREF}
                     className="font-medium text-brand-dark hover:text-brand"
                   >
                     {SERVICE_PHONE}
-                  </a>
+                  </CallLink>
                 </p>
                 <p>
                   <span className="font-medium text-slate-900">E-Mail:</span>{" "}

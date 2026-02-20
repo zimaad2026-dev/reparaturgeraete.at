@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import { SERVICE_EMAIL, SERVICE_PHONE } from "@/lib/contact";
+
+const GA4_MEASUREMENT_ID = "G-D95PCMY1MD";
+const GOOGLE_ADS_ID = "AW-17863468955";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,6 +103,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
       >
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-global"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('config','${GA4_MEASUREMENT_ID}');gtag('config','${GOOGLE_ADS_ID}');window.updateConsent=function(granted){if(!window.gtag)return;window.gtag('consent','update',{ad_storage:granted?'granted':'denied',analytics_storage:granted?'granted':'denied',ad_user_data:granted?'granted':'denied',ad_personalization:granted?'granted':'denied'});};`,
+          }}
+        />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">

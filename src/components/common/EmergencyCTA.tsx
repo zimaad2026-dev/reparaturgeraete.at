@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import CallLink from "@/components/CallLink";
 import { SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 type EmergencyCTAProps = {
@@ -35,21 +36,21 @@ export default function EmergencyCTA({ compact }: EmergencyCTAProps) {
           </p>
           <p className="mt-2 text-sm font-medium text-slate-900">
             {isEnglish ? "Phone:" : "Telefon:"}{" "}
-            <a
+            <CallLink
               href={SERVICE_PHONE_HREF}
               className="text-brand-dark hover:text-brand"
             >
               {SERVICE_PHONE}
-            </a>
+            </CallLink>
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <a
+          <CallLink
             href={SERVICE_PHONE_HREF}
             className="inline-flex items-center justify-center rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             {callLabel}
-          </a>
+          </CallLink>
           <Link
             href="/#kontaktformular"
             className="inline-flex items-center justify-center rounded-xl border border-brand/30 bg-white px-4 py-2.5 text-sm font-semibold text-brand-dark shadow-sm hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"

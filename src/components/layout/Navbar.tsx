@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import CallLink from "@/components/CallLink";
 import { SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 const navLinks = [
@@ -206,7 +207,7 @@ export default function Navbar() {
                 EN
               </Link>
             </div>
-            <a
+            <CallLink
               href={SERVICE_PHONE_HREF}
               className="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
@@ -226,7 +227,7 @@ export default function Navbar() {
                 />
               </svg>
               <span className="whitespace-nowrap">{SERVICE_PHONE}</span>
-            </a>
+            </CallLink>
           </div>
         </nav>
       </div>
@@ -300,13 +301,13 @@ export default function Navbar() {
               <Link href={hrefEn} className={classNames("px-2 py-1.5 rounded", isEnglish ? "text-brand bg-brand-light" : "text-slate-500")} onClick={() => setOpen(false)}>EN</Link>
             </div>
             <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-3">
-              <a
+              <CallLink
                 href={SERVICE_PHONE_HREF}
                 className="inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 onClick={() => setOpen(false)}
               >
                 {SERVICE_PHONE}
-              </a>
+              </CallLink>
               <Link
                 href="/#kontaktformular"
                 className="inline-flex items-center justify-center rounded-xl border border-brand/30 bg-white px-4 py-2 text-sm font-semibold text-brand-dark shadow-sm hover:border-brand hover:text-brand"

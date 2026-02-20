@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CallLink from "@/components/CallLink";
 import { SERVICE_EMAIL, SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 const footerLinks = {
@@ -45,12 +46,12 @@ export default function Footer() {
             <div className="mt-4 space-y-1.5 text-sm text-slate-600">
               <p>
                 <span className="font-medium text-slate-700">Telefon:</span>{" "}
-                <a
+                <CallLink
                   href={SERVICE_PHONE_HREF}
                   className="font-medium text-brand-dark hover:text-brand"
                 >
                   {SERVICE_PHONE}
-                </a>
+                </CallLink>
               </p>
               <p>
                 <span className="font-medium text-slate-700">E-Mail:</span>{" "}

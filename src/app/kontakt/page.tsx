@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
+import CallLink from "@/components/CallLink";
 import { SERVICE_EMAIL, SERVICE_PHONE, SERVICE_PHONE_HREF } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -40,12 +41,12 @@ export default function KontaktPage() {
               <div className="mt-5 space-y-4 text-sm">
                 <p>
                   <span className="font-medium text-slate-700">Telefon:</span>{" "}
-                  <a
+                  <CallLink
                     href={SERVICE_PHONE_HREF}
                     className="font-medium text-brand-dark hover:text-brand"
                   >
                     {SERVICE_PHONE}
-                  </a>
+                  </CallLink>
                 </p>
                 <p>
                   <span className="font-medium text-slate-700">E-Mail:</span>{" "}
