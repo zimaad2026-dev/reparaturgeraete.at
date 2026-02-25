@@ -151,7 +151,7 @@ export default function RootLayout({
                 const target = e.target.closest("a[href^='tel:']");
                 if (target && typeof gtag === "function") {
                   gtag('event','conversion',{
-                    send_to: '${GOOGLE_ADS_ID}/8e1CCIhb-PsbEJvP-8VC'
+                    send_to: '${GOOGLE_ADS_ID}/Pv3hCL_qif4bEJvP-8VC'
                   });
                 }
               });
