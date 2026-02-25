@@ -146,15 +146,7 @@ export default function RootLayout({
                 });
               };
 
-              // Track tel: clicks (Google Ads conversion)
-              document.addEventListener("click", function(e) {
-                const target = e.target.closest("a[href^='tel:']");
-                if (target && typeof gtag === "function") {
-                  gtag('event','conversion',{
-                    send_to: '${GOOGLE_ADS_ID}/Pv3hCL_qif4bEJvP-8VC'
-                  });
-                }
-              });
+              
             `,
           }}
         />
