@@ -7,7 +7,6 @@ import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import { SERVICE_EMAIL, SERVICE_PHONE } from "@/lib/contact";
 
-const GA4_MEASUREMENT_ID = "G-D95PCMY1MD";
 const GOOGLE_ADS_ID = "AW-17863468955";
 
 const geistSans = Geist({
@@ -124,25 +123,19 @@ export default function RootLayout({
               // Default consent (GDPR compliant)
               gtag('consent','default',{
                 ad_storage:'denied',
-                analytics_storage:'denied',
-                ad_user_data:'denied',
-                ad_personalization:'denied'
+                
               });
 
               // Configure Google Ads
               gtag('config','${GOOGLE_ADS_ID}');
 
-              // Configure GA4
-              gtag('config','${GA4_MEASUREMENT_ID}');
+             
 
               // Consent update function (used by CookieBanner)
               window.updateConsent = function(granted){
                 if(!window.gtag) return;
                 window.gtag('consent','update',{
                   ad_storage: granted ? 'granted' : 'denied',
-                  analytics_storage: granted ? 'granted' : 'denied',
-                  ad_user_data: granted ? 'granted' : 'denied',
-                  ad_personalization: granted ? 'granted' : 'denied'
                 });
               };
 
