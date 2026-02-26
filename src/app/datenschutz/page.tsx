@@ -50,10 +50,10 @@ export default function DatenschutzPage() {
               <p>
                 Telefon:{" "}
                 <Link
-                  href="tel:+436604568119"
+                  href="tel:+436764531979"
                   className="font-medium text-brand-dark hover:text-brand"
                 >
-                  +43 660 456 8119
+                  +43 676 453 1979
                 </Link>
               </p>
               <p>
